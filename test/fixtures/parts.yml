@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombreComun_parte: MyString
+  precio_parte: MyString
+  order: one
+  deviseModel: one
+
+two:
+  nombreComun_parte: MyString
+  precio_parte: MyString
+  order: two
+  deviseModel: two
