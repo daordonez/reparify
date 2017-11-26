@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124164933) do
+ActiveRecord::Schema.define(version: 20171126163941) do
 
   create_table "dashboards", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20171124164933) do
 
   create_table "manufacturers", force: :cascade do |t|
     t.string "nombre_fabricante"
-    t.integer "famiily_id"
+    t.integer "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["famiily_id"], name: "index_manufacturers_on_famiily_id"
+    t.index ["family_id"], name: "index_manufacturers_on_family_id"
   end
 
   create_table "orders", force: :cascade do |t|

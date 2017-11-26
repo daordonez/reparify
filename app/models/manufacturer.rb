@@ -1,3 +1,3 @@
 class Manufacturer < ApplicationRecord
-  belongs_to :famiily
+  belongs_to :family
 end

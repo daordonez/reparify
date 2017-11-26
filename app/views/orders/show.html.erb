@@ -6,13 +6,13 @@
 </p>
 
 <p>
-  <strong>Valorpedido:</strong>
-  <%= @order.valorPedido %>
+  <strong>Valor pedido:</strong>
+  <p><%= @order.valorPedido %> €</p>
 </p>
 
 <p>
   <strong>Provider:</strong>
-  <%= @order.provider %>
+  <%= @order.provider.nombre_proveedor %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

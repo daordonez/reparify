@@ -2,8 +2,8 @@
 
 one:
   nombre_fabricante: MyString
-  famiily: one
+  family: one
 
 two:
   nombre_fabricante: MyString
-  famiily: two
+  family: two
