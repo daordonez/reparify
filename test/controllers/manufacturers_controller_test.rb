@@ -17,7 +17,7 @@ class ManufacturersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create manufacturer" do
     assert_difference('Manufacturer.count') do
-      post manufacturers_url, params: { manufacturer: { famiily_id: @manufacturer.famiily_id, nombre_fabricante: @manufacturer.nombre_fabricante } }
+      post manufacturers_url, params: { manufacturer: { family_id: @manufacturer.family_id, nombre_fabricante: @manufacturer.nombre_fabricante } }
     end
 
     assert_redirected_to manufacturer_url(Manufacturer.last)
@@ -34,7 +34,7 @@ class ManufacturersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update manufacturer" do
-    patch manufacturer_url(@manufacturer), params: { manufacturer: { famiily_id: @manufacturer.famiily_id, nombre_fabricante: @manufacturer.nombre_fabricante } }
+    patch manufacturer_url(@manufacturer), params: { manufacturer: { family_id: @manufacturer.family_id, nombre_fabricante: @manufacturer.nombre_fabricante } }
     assert_redirected_to manufacturer_url(@manufacturer)
   end
 
