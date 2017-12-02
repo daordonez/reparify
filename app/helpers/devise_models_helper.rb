@@ -1,0 +1,2 @@
+module DeviseModelsHelper
+end

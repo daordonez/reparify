@@ -1,0 +1,12 @@
+<%= simple_form_for(@manufacturer) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre_fabricante %>
+    <%= f.association :famiily %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
