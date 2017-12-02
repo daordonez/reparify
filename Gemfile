@@ -40,6 +40,14 @@ gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'simple_form', '~> 3.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
+#dependencias de active admin
+gem 'activeadmin', '~> 1.1'
+gem 'activeadmin_addons'
+gem 'cancan'
+gem 'draper'
+gem 'pundit'
+gem 'rails-i18n', '~> 5.0', '>= 5.0.4'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

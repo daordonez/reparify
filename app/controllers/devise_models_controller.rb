@@ -69,6 +69,6 @@ class DeviseModelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def devise_model_params
-      params.require(:devise_model).permit(:nombrecomercial_modelo, :manufacturer_id)
+      params.require(:devise_model).permit(:nombrecomercial_modelo, :manufacturer_id, devise_model_attributes:[:id,:nombreComun_parte,:precio_parte,:_destroy])
     end
 end
