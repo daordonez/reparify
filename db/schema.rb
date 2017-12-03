@@ -10,7 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124164933) do
+ActiveRecord::Schema.define(version: 20171129182926) do
+
+  create_table "active_admin_comments", force: :cascade do |t|
+    t.string "namespace"
+    t.text "body"
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.string "author_type"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
+    t.index ["namespace"], name: "index_active_admin_comments_on_namespace"
+    t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  end
+
+  create_table "admin_users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_admin_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
 
   create_table "dashboards", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -33,10 +64,10 @@ ActiveRecord::Schema.define(version: 20171124164933) do
 
   create_table "manufacturers", force: :cascade do |t|
     t.string "nombre_fabricante"
-    t.integer "famiily_id"
+    t.integer "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["famiily_id"], name: "index_manufacturers_on_famiily_id"
+    t.index ["family_id"], name: "index_manufacturers_on_family_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -49,13 +80,14 @@ ActiveRecord::Schema.define(version: 20171124164933) do
   end
 
   create_table "parts", force: :cascade do |t|
-    t.string "nombreComun_parte"
-    t.string "precio_parte"
+    t.string "nombre_parte"
+    t.integer "cantidad_stock"
+    t.string "precio"
+    t.integer "devise_model_id"
     t.integer "order_id"
-    t.integer "deviseModel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["deviseModel_id"], name: "index_parts_on_deviseModel_id"
+    t.index ["devise_model_id"], name: "index_parts_on_devise_model_id"
     t.index ["order_id"], name: "index_parts_on_order_id"
   end
 

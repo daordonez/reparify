@@ -4,7 +4,7 @@
   <div class="form-inputs">
     <%= f.input :fecha_pedido %>
     <%= f.input :valorPedido %>
-    <%= f.association :provider %>
+    <%= f.association :provider, label_method: :nombre_proveedor %>
   </div>
 
   <div class="form-actions">
