@@ -112,7 +112,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'dashboard#index'
+  config.root_to = 'dashboard#index'
 
   # == Admin Comments
   #
@@ -282,7 +282,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = 'Technologic Parts S.L - 2017'
 
   # == Sorting
   #
@@ -293,4 +293,12 @@ ActiveAdmin.setup do |config|
 
   #config/initializers/active_admin.rb
   config.before_action :set_admin_locale
+  #Añadido por Diego (Italia)
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Taller', priority: 1
+      menu.add label: 'Pedidos',priority: 2
+    end
+  end
+  #cierre añadido por
 end

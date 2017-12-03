@@ -12,6 +12,8 @@ ActiveAdmin.register Order do
 #   permitted
 # end
 
+menu label: "Albaranes", parent: "Pedidos"
+
 permit_params :provider_id, :fecha_pedido, :valorPedido
 
 	form title: "Nuevo Pedido" do |f|

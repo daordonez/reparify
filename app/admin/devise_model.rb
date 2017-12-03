@@ -12,8 +12,18 @@ ActiveAdmin.register DeviseModel do
 #   permitted
 # end
 
+menu label: "Modelos", parent: "Taller"
 permit_params :nombrecomercial_modelo, :manufacturer_id
 
+show do
+	panel "Componentes de #{DeviseModel}" do
+		table_for devise_model.parts do
+			column :nombre_parte
+			column :cantidad_stock
+		end
+	end
+	active_admin_comments
+end
 	form title: 'Nuevo Modelo - Movil ' do |f|
 		f.semantic_errors
 		f.inputs do
