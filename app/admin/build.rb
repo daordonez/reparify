@@ -12,9 +12,9 @@ ActiveAdmin.register Build do
 #   permitted
 # end
 
-menu :label => "Construcciones"
+menu :label => "Construcciones", :priority => 3
 
-permit_params :fecha , :part_id, :imei , :color , :capacidad , :estado_estetico , :devise_model_id, :NumeroSerie
+permit_params :fecha , :part_id, :imei , :color , :capacidad , :estado_estetico , :devise_model_id, :NumeroSerie, :test_id
 
 	form :title => "Nuevo Dispositivo Reacondicionado - Construccion" do |f|
 		f.semantic_errors
@@ -28,6 +28,21 @@ permit_params :fecha , :part_id, :imei , :color , :capacidad , :estado_estetico 
 			f.input :estado_estetico, :label => "Estado", as: :select , :collection => ["SHINY","ORO","PLATA","BRONDE","STALLONE"]
 		end
 		f.actions
+		end
+
+		csv do
+			column (:devise_model_id) { |build| build.devise_model.nombrecomercial_modelo}
+			column :color
+			column :capacidad
+			column :estado_estetico
+			column :fecha
+			column :imei
+			column :NumeroSerie
+		end
+		controller do
+			def csv_filename
+				'Construccion ' << Time.now.strftime("%d/%m/%Y %H:%M") << '.csv'
+			end
 		end
 
 end
