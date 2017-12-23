@@ -12,7 +12,7 @@ ActiveAdmin.register Family do
 #   permitted
 # end
 
-menu label: "Famlias"
+menu label: "Famlias" , :parent => "Taller"
 permit_params :nombre_familia
 
 end
