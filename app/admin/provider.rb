@@ -13,6 +13,4 @@ ActiveAdmin.register Provider do
 # end
 menu label: "Proveedores", parent: "Pedidos"
 
-permit_params :nombre_proveedor , :tiempoServicio_proveedor
-
 end
