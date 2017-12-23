@@ -16,7 +16,7 @@ menu label: "Modelos", parent: "Taller"
 permit_params :nombrecomercial_modelo, :manufacturer_id
 
 show do
-	panel "Componentes de #{DeviseModel.name.to_s}" do
+	panel "Componentes de #{DeviseModel}" do
 		table_for devise_model.parts do
 			column :nombre_parte
 			column :cantidad_stock

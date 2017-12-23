@@ -164,7 +164,7 @@ ActiveAdmin.setup do |config|
   # Add additional meta tags to the head element of active admin pages.
   #
   # Add tags to all pages logged in users see:
-     config.meta_tags = { author: 'Technologic Parts S.L' }
+  #   config.meta_tags = { author: 'My Company' }
 
   # By default, sign up/sign in/recover password pages are excluded
   # from showing up in search engine results by adding a robots meta
@@ -184,7 +184,7 @@ ActiveAdmin.setup do |config|
   # Create another checkbox is disabled by default. You can customize it for individual
   # resources or you can enable them globally from here.
   #
-   config.create_another = true
+  # config.create_another = true
 
   # == Register Stylesheets & Javascripts
   #
@@ -204,7 +204,7 @@ ActiveAdmin.setup do |config|
   # == CSV options
   #
   # Set the CSV builder separator
-  config.csv_options = { col_sep: ';' }
+  # config.csv_options = { col_sep: ';' }
   #
   # Force the use of quotes
   # config.csv_options = { force_quotes: true }
