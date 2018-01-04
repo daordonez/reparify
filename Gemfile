@@ -41,6 +41,7 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'simple_form', '~> 3.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'rqrcode', '~> 0.10.1'
 
 #dependencias de active admin
 gem 'activeadmin', '~> 1.1'

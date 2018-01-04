@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171205101117) do
+ActiveRecord::Schema.define(version: 20171221105002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,11 +63,6 @@ ActiveRecord::Schema.define(version: 20171205101117) do
     t.index ["test_id"], name: "index_builds_on_test_id"
   end
 
-  create_table "dashboards", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "devise_models", force: :cascade do |t|
     t.string "nombrecomercial_modelo"
     t.integer "manufacturer_id"
@@ -88,6 +83,17 @@ ActiveRecord::Schema.define(version: 20171205101117) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_manufacturers_on_family_id"
+  end
+
+  create_table "mintests", force: :cascade do |t|
+    t.string "nombreTest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mintests_tests", id: false, force: :cascade do |t|
+    t.bigint "test_id", null: false
+    t.bigint "mintest_id", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -119,16 +125,13 @@ ActiveRecord::Schema.define(version: 20171205101117) do
   end
 
   create_table "tests", force: :cascade do |t|
-    t.datetime "fecha"
+    t.datetime "fechaTest"
     t.bigint "devise_model_id"
-    t.bigint "part_id"
-    t.string "estado"
+    t.boolean "estado"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "build_id"
-    t.index ["build_id"], name: "index_tests_on_build_id"
+    t.text "observacion"
     t.index ["devise_model_id"], name: "index_tests_on_devise_model_id"
-    t.index ["part_id"], name: "index_tests_on_part_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -150,8 +153,5 @@ ActiveRecord::Schema.define(version: 20171205101117) do
 
   add_foreign_key "builds", "devise_models"
   add_foreign_key "builds", "parts"
-  add_foreign_key "builds", "tests"
-  add_foreign_key "tests", "builds"
   add_foreign_key "tests", "devise_models"
-  add_foreign_key "tests", "parts"
 end
