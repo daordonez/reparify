@@ -112,7 +112,7 @@ ActiveAdmin.setup do |config|
   # roots for each namespace.
   #
   # Default:
-  # config.root_to = 'dashboard#index'
+  config.root_to = 'dashboard#index'
 
   # == Admin Comments
   #
@@ -164,7 +164,7 @@ ActiveAdmin.setup do |config|
   # Add additional meta tags to the head element of active admin pages.
   #
   # Add tags to all pages logged in users see:
-  #   config.meta_tags = { author: 'My Company' }
+     config.meta_tags = { author: 'Technologic Parts S.L' }
 
   # By default, sign up/sign in/recover password pages are excluded
   # from showing up in search engine results by adding a robots meta
@@ -184,7 +184,7 @@ ActiveAdmin.setup do |config|
   # Create another checkbox is disabled by default. You can customize it for individual
   # resources or you can enable them globally from here.
   #
-  # config.create_another = true
+   config.create_another = true
 
   # == Register Stylesheets & Javascripts
   #
@@ -204,7 +204,7 @@ ActiveAdmin.setup do |config|
   # == CSV options
   #
   # Set the CSV builder separator
-  # config.csv_options = { col_sep: ';' }
+  config.csv_options = { col_sep: ';' }
   #
   # Force the use of quotes
   # config.csv_options = { force_quotes: true }
@@ -282,7 +282,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = 'Technologic Parts S.L - 2017'
 
   # == Sorting
   #
@@ -293,4 +293,12 @@ ActiveAdmin.setup do |config|
 
   #config/initializers/active_admin.rb
   config.before_action :set_admin_locale
+  #Añadido por Diego (Italia)
+  config.namespace :admin do |admin|
+    admin.build_menu do |menu|
+      menu.add label: 'Taller', priority: 1
+      menu.add label: 'Pedidos',priority: 2
+    end
+  end
+  #cierre añadido por
 end

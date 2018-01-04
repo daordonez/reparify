@@ -11,6 +11,8 @@ ActiveAdmin.register Manufacturer do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+
+menu label: "Fabricantes", parent: "Taller"
  permit_params :nombre_fabricante , :family_id
 
 end

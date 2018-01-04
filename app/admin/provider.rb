@@ -11,5 +11,8 @@ ActiveAdmin.register Provider do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
+menu label: "Proveedores", parent: "Pedidos"
+
+permit_params :nombre_proveedor , :tiempoServicio_proveedor
 
 end

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.4.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -9,7 +10,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -32,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# gem 'capistrano-rails', group: :development 
 
 # Añadido por Diego para Reparify
 gem 'devise', '~> 4.3'
@@ -39,6 +41,7 @@ gem 'cocoon', '~> 1.2', '>= 1.2.11'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'simple_form', '~> 3.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+gem 'rqrcode', '~> 0.10.1'
 
 #dependencias de active admin
 gem 'activeadmin', '~> 1.1'

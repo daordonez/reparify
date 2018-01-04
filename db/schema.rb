@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129182926) do
+ActiveRecord::Schema.define(version: 20171221105002) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -43,9 +46,21 @@ ActiveRecord::Schema.define(version: 20171129182926) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "dashboards", force: :cascade do |t|
+  create_table "builds", force: :cascade do |t|
+    t.datetime "fecha"
+    t.bigint "part_id"
+    t.string "imei"
+    t.string "color"
+    t.string "capacidad"
+    t.string "estado_estetico"
+    t.bigint "devise_model_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "test_id"
+    t.string "NumeroSerie"
+    t.index ["devise_model_id"], name: "index_builds_on_devise_model_id"
+    t.index ["part_id"], name: "index_builds_on_part_id"
+    t.index ["test_id"], name: "index_builds_on_test_id"
   end
 
   create_table "devise_models", force: :cascade do |t|
@@ -68,6 +83,17 @@ ActiveRecord::Schema.define(version: 20171129182926) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_manufacturers_on_family_id"
+  end
+
+  create_table "mintests", force: :cascade do |t|
+    t.string "nombreTest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mintests_tests", id: false, force: :cascade do |t|
+    t.bigint "test_id", null: false
+    t.bigint "mintest_id", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -98,6 +124,16 @@ ActiveRecord::Schema.define(version: 20171129182926) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "tests", force: :cascade do |t|
+    t.datetime "fechaTest"
+    t.bigint "devise_model_id"
+    t.boolean "estado"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "observacion"
+    t.index ["devise_model_id"], name: "index_tests_on_devise_model_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -115,4 +151,7 @@ ActiveRecord::Schema.define(version: 20171129182926) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "builds", "devise_models"
+  add_foreign_key "builds", "parts"
+  add_foreign_key "tests", "devise_models"
 end

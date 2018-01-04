@@ -12,6 +12,7 @@ ActiveAdmin.register Part do
 #   permitted
 # end
 
+menu label: "Componentes", parent: "Taller"
 permit_params :nombre_parte, :cantidad_stock ,:precio, :devise_model_id, :order_id
 
 end
