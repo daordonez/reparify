@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Build:</strong>
+  <%= @test.build %>
+</p>
+
+<p>
+  <strong>Devise model:</strong>
+  <%= @test.devise_model %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @test.estado %>
+</p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Back', tests_path %>

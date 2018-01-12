@@ -1,10 +1,9 @@
 class CreateTests < ActiveRecord::Migration[5.1]
   def change
     create_table :tests do |t|
-      t.datetime :fecha
+      t.references :build, foreign_key: true
       t.references :devise_model, foreign_key: true
-      t.references :part, foreign_key: true
-      t.string :estado
+      t.boolean :estado
 
       t.timestamps
     end
