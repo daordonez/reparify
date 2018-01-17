@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tests</h1>
+<h1>Testeos</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Build</th>
@@ -15,8 +15,8 @@
   <tbody>
     <% @tests.each do |test| %>
       <tr>
-        <td><%= test.build %></td>
-        <td><%= test.devise_model %></td>
+        <td><%= test.build.imei %></td>
+        <td><%= test.devise_model.nombrecomercial_modelo %></td>
         <td><%= test.estado %></td>
         <td><%= link_to 'Show', test %></td>
         <td><%= link_to 'Edit', edit_test_path(test) %></td>
@@ -28,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Test', new_test_path %>
+<%= link_to 'New Test', new_test_path, :class => 'btn btn-success' %>
+<%= link_to 'MiniTests', mintests_path, :class => 'btn btn-primary' %>

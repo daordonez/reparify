@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @invoice.customer %>
+</p>
+
+<p>
+  <strong>Items:</strong>
+  <%= @invoice.items.each do |it| %>
+    <ul>
+      <li><%= it %></li>
+    </ul>
+  <% end %>
+</p>
+
+<p>
+  <strong>Baseimponible prec:</strong>
+  <%= @invoice.baseimponible_prec %>
+</p>
+
+<p>
+  <strong>Ivaimponilbe prec:</strong>
+  <%= @invoice.ivaimponilbe_prec %>
+</p>
+
+<p>
+  <strong>Importetotal prec:</strong>
+  <%= @invoice.importetotal_prec %>
+</p>
+
+<%= link_to 'Edit', edit_invoice_path(@invoice) %> |
+<%= link_to 'Back', invoices_path %>

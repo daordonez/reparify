@@ -11,30 +11,21 @@
   </head>
 
  <body>
-  <% if user_signed_in? %>
   <div class="container-fluid">
     <div class="row">
       <%= render 'layouts/navbar' %>
     </div>
     <div class="row">
-      <%= render 'layouts/alert' %>
-      <%= yield %>
+      <div class="col-md-12">
+        <%= render 'layouts/alert' %>
+        <%= yield %>
+      </div>
     </div>
     <div class="row">
       <%= render 'layouts/footer'%>
     </div>  
     
   </div>
-  <% else %>
-  <br>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-4 col-sm-offset-4">
-     <%= render 'layouts/alert' %>
-   </div>
- </div>
- <%= yield %>
- <% end %>
-
 
 </body>
 </html>

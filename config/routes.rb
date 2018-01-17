@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :invoices
+  resources :items
+  resources :customers
+  resources :conmutadors
+  resources :mintests
   resources :tests
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -7,14 +12,11 @@ Rails.application.routes.draw do
   resources :devise_models
   resources :providers
   resources :families
-  #Get de recurso desde otro controlador
-  controller :dashboard do
-  	get 'dashboard/show' => :list
-  	get 'dashboard/delete' => :delete
-  	get 'dashboard/edit' => :edit
-  end
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root 'admin/dashboard#index'
+  get 'admin', to: 'admin/dashboard#index', as: 'admin'
+
+  root 'conmutadors#index'
 end

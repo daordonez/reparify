@@ -2,9 +2,29 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :build %>
-    <%= f.association :devise_model %>
-    <%= f.input :estado %>
+
+	<!-- Cabecera de información del test -->
+		<div class="row">
+			<div class="col">
+				<%= f.association :build, :label_method => :imei %>
+	    		<%= f.association :devise_model %>
+			</div>		
+		</div>
+	<!-- Comprobaciones o minitesteos pasados -->
+	<div class="row collection-check-box">
+		<div class="offset-md-2 col-md-4 rounded-top bg-success">
+			<%=f.collection_check_boxes :mintest_ids , Mintest.all, :id , :nombre do |mintest|%>
+				<%=mintest.check_box%>
+				<%=mintest.label%>
+			<% end %>
+		</div>
+	</div>
+	<div class="row">
+		<div class="offset-md-2 col-md-4 bg-warning rounded-bottom">
+			<%= f.input :estado, :label => ' Test Aprobado' %>
+		</div>
+	</div>
+    
   </div>
 
   <div class="form-actions">

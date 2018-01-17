@@ -1,0 +1,2 @@
+class Conmutador < ApplicationRecord
+end

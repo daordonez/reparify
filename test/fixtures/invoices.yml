@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer: one
+  item: one
+  baseimponible_prec: MyString
+  ivaimponilbe_prec: MyString
+  importetotal_prec: MyString
+
+two:
+  customer: two
+  item: two
+  baseimponible_prec: MyString
+  ivaimponilbe_prec: MyString
+  importetotal_prec: MyString

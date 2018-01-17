@@ -1,0 +1,15 @@
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nombre_art %>
+    <%= f.input :descripcion_art %>
+    <%= f.input :baseimponible_prec %>
+    <%= f.input :ivaimponible_prec %>
+    <%= f.input :total_prec %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

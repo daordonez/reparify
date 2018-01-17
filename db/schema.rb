@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180112134553) do
+ActiveRecord::Schema.define(version: 20180115003800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,24 @@ ActiveRecord::Schema.define(version: 20180112134553) do
     t.index ["test_id"], name: "index_builds_on_test_id"
   end
 
+  create_table "conmutadors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "nombre_apellido1"
+    t.string "nombre_apellido2"
+    t.string "nombre_primero"
+    t.string "dni"
+    t.string "direccion_completa"
+    t.integer "cp"
+    t.string "ppoblacion"
+    t.string "formapago_hab"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "devise_models", force: :cascade do |t|
     t.string "nombrecomercial_modelo"
     t.integer "manufacturer_id"
@@ -77,12 +95,48 @@ ActiveRecord::Schema.define(version: 20180112134553) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invoices", force: :cascade do |t|
+    t.bigint "customer_id"
+    t.bigint "item_id"
+    t.string "baseimponible_prec"
+    t.string "ivaimponilbe_prec"
+    t.string "importetotal_prec"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_invoices_on_customer_id"
+    t.index ["item_id"], name: "index_invoices_on_item_id"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "nombre_art"
+    t.string "descripcion_art"
+    t.string "baseimponible_prec"
+    t.string "ivaimponible_prec"
+    t.string "total_prec"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "invoice_id"
+    t.index ["invoice_id"], name: "index_items_on_invoice_id"
+  end
+
   create_table "manufacturers", force: :cascade do |t|
     t.string "nombre_fabricante"
     t.integer "family_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["family_id"], name: "index_manufacturers_on_family_id"
+  end
+
+  create_table "mintests", force: :cascade do |t|
+    t.string "nombre"
+    t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "mintests_tests", id: false, force: :cascade do |t|
+    t.bigint "test_id", null: false
+    t.bigint "mintest_id", null: false
   end
 
   create_table "orders", force: :cascade do |t|
@@ -142,6 +196,9 @@ ActiveRecord::Schema.define(version: 20180112134553) do
 
   add_foreign_key "builds", "devise_models"
   add_foreign_key "builds", "parts"
+  add_foreign_key "invoices", "customers"
+  add_foreign_key "invoices", "items"
+  add_foreign_key "items", "invoices"
   add_foreign_key "tests", "builds"
   add_foreign_key "tests", "devise_models"
 end

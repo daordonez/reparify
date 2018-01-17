@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre art</th>
+      <th>Descripcion art</th>
+      <th>Baseimponible prec</th>
+      <th>Ivaimponible prec</th>
+      <th>Total prec</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.nombre_art %></td>
+        <td><%= item.descripcion_art %></td>
+        <td><%= item.baseimponible_prec %></td>
+        <td><%= item.ivaimponible_prec %></td>
+        <td><%= item.total_prec %></td>
+        <td><%= link_to 'Show', item %></td>
+        <td><%= link_to 'Edit', edit_item_path(item) %></td>
+        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_item_path %>

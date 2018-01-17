@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre art:</strong>
+  <%= @item.nombre_art %>
+</p>
+
+<p>
+  <strong>Descripcion art:</strong>
+  <%= @item.descripcion_art %>
+</p>
+
+<p>
+  <strong>Baseimponible prec:</strong>
+  <%= @item.baseimponible_prec %>
+</p>
+
+<p>
+  <strong>Ivaimponible prec:</strong>
+  <%= @item.ivaimponible_prec %>
+</p>
+
+<p>
+  <strong>Total prec:</strong>
+  <%= @item.total_prec %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

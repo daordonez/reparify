@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Mini testeos</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @mintests.each do |mintest| %>
+      <tr>
+        <td><%= mintest.nombre %></td>
+        <td><%= mintest.descripcion %></td>
+        <td><%= link_to 'Ver', mintest, :class => 'btn btn-info' %></td>
+        <td><%= link_to 'Editar', edit_mintest_path(mintest) ,:class => 'btn btn-warning'%></td>
+        <td><%= link_to 'Borrar', mintest, method: :delete, data: { confirm: 'Are you sure?' } , :class => 'btn btn-danger'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mintest', new_mintest_path, :class => 'btn btn-success' %>
+<%= link_to 'Test Gral' , tests_path , :class => 'btn btn-primary'%>

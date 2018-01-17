@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre_art: MyString
+  descripcion_art: MyString
+  baseimponible_prec: MyString
+  ivaimponible_prec: MyString
+  total_prec: MyString
+
+two:
+  nombre_art: MyString
+  descripcion_art: MyString
+  baseimponible_prec: MyString
+  ivaimponible_prec: MyString
+  total_prec: MyString

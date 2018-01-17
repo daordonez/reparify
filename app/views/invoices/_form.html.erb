@@ -1,0 +1,75 @@
+<%= simple_form_for(@invoice) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-imputs">
+
+    <div class="row">
+      <!-- Cabecera de la factura, datos obligatorios -->
+
+      <!-- Dadtos de la empresa -->
+      <div class="offset-md-2 col-md-3 border border-dark">
+        <h1>Tecnologic Parts SL</h1><br>
+        <h1>CIF: B9884321</h1><br>
+        <p>Av.del Grau , 81 (Bajo - Izquierda)</p>
+      </div>
+
+      <!-- Datos del Cliente -->
+      <div class="col-md-3 border border-dark">
+           <%= f.association :customer , :label_method => :nombre_primero%>
+      </div>
+    </div>
+
+    <!-- Cuerpo de la factura , a demostración ahora mismo 14/01/2018 . FUTURO ESPACIO COCOON-->
+    <div class="row">
+      <div class="offset-md-2 col-md-6 border border-dark">
+
+        <div class="items">
+
+          <!-- Cocoon -->
+          <div class="invoice_item">
+            <%= f.simple_fields_for :items do |item|%>
+              <%= render 'item_fields', :f => item %>
+            <% end %>
+            <div class="links">
+              <%= link_to_add_association 'Nuevo articulo', f , :items%>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Pie de Factura, importes finales a almacenamiento y calculados sobres los items anteriores -->
+
+    <div class="row">
+      <div class="offset-md-2 col-md-6 border border-dark">
+        <div class="col-md-2">
+          <%= f.input :baseimponible_prec %>
+        </div>
+        <div class="col-md-2">
+          <%= f.input :ivaimponilbe_prec %>
+        </div>
+        <div class="col-md-2">
+          <%= f.input :importetotal_prec %>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+  <!-- Botones de accion -->
+  <div class="row">
+
+    <div class="d-flex offset-md-2 col-md-6 align-content-end">
+        <div class="form-actions">
+          <%= link_to 'Atras', invoices_path, :class => 'btn btn-danger' %>
+          <%= f.button :submit,:label => 'Crear factura', :class=> 'btn btn-success' %> 
+        </div>
+    </div>
+
+  </div>
+
+<% end %>
