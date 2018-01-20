@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180115003800) do
+ActiveRecord::Schema.define(version: 20180119140626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,19 @@ ActiveRecord::Schema.define(version: 20180115003800) do
     t.index ["test_id"], name: "index_builds_on_test_id"
   end
 
+  create_table "companies", force: :cascade do |t|
+    t.string "nombre"
+    t.string "razonsocial"
+    t.string "cif"
+    t.string "direccion"
+    t.string "cp"
+    t.string "telefono"
+    t.string "logo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "active"
+  end
+
   create_table "conmutadors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -103,6 +116,8 @@ ActiveRecord::Schema.define(version: 20180115003800) do
     t.string "importetotal_prec"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_invoices_on_company_id"
     t.index ["customer_id"], name: "index_invoices_on_customer_id"
     t.index ["item_id"], name: "index_invoices_on_item_id"
   end
@@ -196,6 +211,7 @@ ActiveRecord::Schema.define(version: 20180115003800) do
 
   add_foreign_key "builds", "devise_models"
   add_foreign_key "builds", "parts"
+  add_foreign_key "invoices", "companies"
   add_foreign_key "invoices", "customers"
   add_foreign_key "invoices", "items"
   add_foreign_key "items", "invoices"

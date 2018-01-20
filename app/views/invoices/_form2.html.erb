@@ -1,0 +1,135 @@
+<div class="container-fluid">
+	<%= simple_form_for(@invoice) do |f| %>
+		<%= f.error_notification%>
+		<div class="row">
+			
+				<!-- Entrada de datos  -->
+				<div class="col col-md-6 border border-dark">
+					<!-- Selección de cliente -->
+					<div class="row">
+						<div class="col col-md-12 border border-dark align-items-center">
+							<button type="button" class="btn btn-primary">NUEVO CLIENTE</button>
+						</div>
+					</div>
+					<!-- Añadir productos Despliega Modal -->
+					<div class="row">
+						<div class="col col-md-12 border border-dark">
+							<button type="button" class="btn btn-outline-success">Nuevo Articulo</button>
+							<%= link_to_add_association 'Nuevo articulo Manual', f , :items , :class => 'btn btn-success '%>
+						</div>
+					</div>
+
+					<!-- Lista de productos o lugar para gestionar productos -->
+					<div class="row">
+						
+							<%= f.simple_fields_for :items do |item|%>
+                  				<%= render 'item_fields', :f => item %>
+                			<% end %>
+						
+					</div>
+				</div>
+
+
+				<!-- Visualización de datos -->
+				<div class="col col-md-6 border border-dark">
+					<div class="row">
+							<div class="col col-md-6 border border-dark">
+								<%= render 'company'%>
+							</div>	
+							<div class="col col-md-6 border border-dark">
+								<ul class="list-group">
+									<li class="list-group-item active">ID - Nombre Completo</li>
+									<li class="list-group-item">Dirección</li>
+									<li class="list-group-item">CP - Población</li>
+									<li class="list-group-item">Telefono </li>
+								</ul>
+							</div>
+					</div>
+					<div class="row">
+						<div class="col col-md-12 border border-dark">
+							<table class="table table-sm">
+								<thead class="thead-dark">
+									<tr>
+										<th>Agente</th>
+										<th>Nº Factura</th>
+										<th>Forma de pago</th>
+										<th>Fecha</th>
+										<th>Vencimiento</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td> - </td>
+										<td> - </td>
+										<td> - </th>
+										<td> - </th>
+										<td> - </th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+
+					
+					
+					<!-- Salida de datos . Solo lectura de articulos introducidos desde el input -->
+					<div class="row">
+						<div class="col border border-dark">
+							<div class="table-responsive">
+								<table class="table table-sm table-hover table-bordered">
+								<thead>
+
+									<tr>
+										<th>ID</th>
+										<th>Descripción Art</th>
+										<th>Base</th>
+										<th>IVA</th>
+										<th>PVP</th>
+									</tr>
+								</thead>
+								<tbody>
+									<% 5.times do %>
+									<tr>
+										<td>*</td>
+										<td>Coca cola</td>
+										<td> 0,70</td>
+										<td> 0,30</td>
+										<td> 1 </td>
+									</tr>
+									<% end %>
+								</tbody>
+							</table>
+							</div>
+						</div>
+					</div>
+					<!-- Pie de factura. Datos = Agente , Forma de pago**, vencimiento, Importe sin IVA, IVA , IMP+iVA, TOTAL -->
+					<div class="row">
+						<div class="col d-flex d-inline">
+							<!-- Calculos Importes -->
+							<div class="col">
+								<table class="table table-sm">
+									<thead>
+										<tr>
+											<th>BASE.APP</th>
+											<th>%IVA</th>
+											<th>IMP.IVA</th>
+											<th>TOTAL</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td> - </td>
+											<td> - </td>
+											<td> - </td>
+											<td class="text-white bg-dark"> - </td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+		</div>
+<% end %>
+</div>

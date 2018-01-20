@@ -1,9 +1,21 @@
-	<div class="nested-fields">
-		<%= f.input :nombre_art %>
-	    <%= f.input :descripcion_art %>
-	    <%= f.input :baseimponible_prec %>
-	    <%= f.input :ivaimponible_prec %>
-	    <%= f.input :total_prec %>
-	 
-		<%= link_to_remove_association "Eliminar articulo", f %>
+<div class="nested-fields">
+	
+	<div class="form row">
+		<div class="col-4">
+		<%= f.input :descripcion_art, :class => 'form-control', :placeholder => "Descripción articulo", label: false %>
 	</div>
+	<div class="col">
+		<%= f.input :baseimponible_prec, :class => 'form-control', :placeholder =>"Base.IMP", label: false %>
+	</div>
+	<div class="col">
+		<%= f.input :ivaimponible_prec, :class => 'form-control', :placeholder =>"21%", label: false %>
+	</div>
+	<div class="col">
+		<%= f.input :total_prec, :class => 'form-control', :placeholder =>"PVP", label: false %>
+	</div>
+	<div class="col">
+		<%= link_to_remove_association "X", f , :class => 'btn btn-outline-danger'%>
+	</div>
+	</div>
+	
+</div>

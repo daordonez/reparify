@@ -5,29 +5,40 @@
 
 	<!-- Cabecera de información del test -->
 		<div class="row">
-			<div class="col">
+			<div class="col-md-12">
 				<%= f.association :build, :label_method => :imei %>
 	    		<%= f.association :devise_model %>
 			</div>		
 		</div>
-	<!-- Comprobaciones o minitesteos pasados -->
-	<div class="row collection-check-box">
-		<div class="offset-md-2 col-md-4 rounded-top bg-success">
-			<%=f.collection_check_boxes :mintest_ids , Mintest.all, :id , :nombre do |mintest|%>
-				<%=mintest.check_box%>
-				<%=mintest.label%>
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="offset-md-2 col-md-4 bg-warning rounded-bottom">
-			<%= f.input :estado, :label => ' Test Aprobado' %>
-		</div>
-	</div>
-    
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+		<!-- Comprobaciones o minitesteos pasados -->
+		<div class="row collection-check-box">
+			<div class="offset-sm-1 col-md-9 ">
+				<%= f.collection_check_boxes :mintest_ids , Mintest.all, :id , :nombre do |mintest|%>
+				<div class="card ml-2" style="width: 18rem;">
+					<%= image_tag("card.jpg", :alt => "Card image cap", :class => 'card-img-top') %>
+					<div class="card-body">
+						<h5 class="card-title"><%=mintest.label%></h5>
+						<p class="card-text">Texto de descripcion</p>
+					</div>
+				</div>
+				<%end%>		
+			</div>
+			<div class="col-md-2 d-flex flex-column list-group">
+					<%=f.collection_check_boxes :mintest_ids , Mintest.all, :id , :nombre do |mintest|%>
+							<%=mintest.check_box%>
+							<%=mintest.label%>
+					<% end %>
+				<div class="bg-warning rounded-bottom">
+			 		<%= f.input :estado, :label => ' Test Aprobado' %>
+			 	</div>
+			 	<div class="form-actions d-flex justify-content-end">
+			 			<%= link_to 'Atras', tests_path, :class => 'btn btn-danger' %>
+			 			<%= f.button :submit , :class => 'btn btn-success'%>
+			 	</div>
+			</div>
+
+			 </div>
+  		</div>
   </div>
 <% end %>

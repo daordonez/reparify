@@ -1,4 +1,11 @@
 class ConmutadorsController < InheritedResources::Base
+	#GET Recursos
+	def index
+		@invoices = Invoice.all
+		@customers = Customer.all
+		@tests = Test.all
+		@conmutadors = Conmutador.all
+	end
 
   private
 

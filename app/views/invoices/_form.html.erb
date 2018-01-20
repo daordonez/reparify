@@ -7,53 +7,48 @@
       <!-- Cabecera de la factura, datos obligatorios -->
 
       <!-- Dadtos de la empresa -->
-      <div class="offset-md-2 col-md-3 border border-dark">
-        <h1>Tecnologic Parts SL</h1><br>
-        <h1>CIF: B9884321</h1><br>
-        <p>Av.del Grau , 81 (Bajo - Izquierda)</p>
+      <div class="offset-md-1 col-md-4 border border-dark">
+              <%= render 'company'%>
       </div>
 
       <!-- Datos del Cliente -->
-      <div class="col-md-3 border border-dark">
+      <div class="col-md-4 border border-dark">
+
+            <%= link_to 'BD Clientes', "#", data: {toggle: "modal", target: "#customers"} %>
+
+
            <%= f.association :customer , :label_method => :nombre_primero%>
       </div>
     </div>
 
     <!-- Cuerpo de la factura , a demostración ahora mismo 14/01/2018 . FUTURO ESPACIO COCOON-->
     <div class="row">
-      <div class="offset-md-2 col-md-6 border border-dark">
 
-        <div class="items">
-
-          <!-- Cocoon -->
-          <div class="invoice_item">
-            <%= f.simple_fields_for :items do |item|%>
-              <%= render 'item_fields', :f => item %>
-            <% end %>
-            <div class="links">
-              <%= link_to_add_association 'Nuevo articulo', f , :items%>
-            </div>
-          </div>
-
-
-
-        </div>
-
-      </div>
+            <!-- Cocoon -->
+              <div class=" offset-md-2col-md-8 border border-dark">
+                <div class="links d-flex justify-content-end ">
+                  <div class="p-2">
+                    <%= link_to_add_association 'Nuevo articulo Manual', f , :items , :class => 'btn btn-success '%>
+                  </div>
+                </div>
+                <%= f.simple_fields_for :items do |item|%>
+                  <%= render 'item_fields', :f => item %>
+                <% end %>
+                
     </div>
 
     <!-- Pie de Factura, importes finales a almacenamiento y calculados sobres los items anteriores -->
 
     <div class="row">
-      <div class="offset-md-2 col-md-6 border border-dark">
-        <div class="col-md-2">
-          <%= f.input :baseimponible_prec %>
+      <div class="offset-md-2 d-flex d-inline col-md-8 border border-dark justify-content-end">
+        <div class="col-md-2 ">
+          <%= f.input :baseimponible_prec, :label => "Base IMP" %>
         </div>
-        <div class="col-md-2">
-          <%= f.input :ivaimponilbe_prec %>
+        <div class="col-md-2 ml-5">
+          <%= f.input :ivaimponilbe_prec, :label => "IVA %" %>
         </div>
-        <div class="col-md-2">
-          <%= f.input :importetotal_prec %>
+        <div class="col-md-2 ml-5">
+          <%= f.input :importetotal_prec, :label => "TOTAL" %>
         </div>
         
       </div>
@@ -73,3 +68,56 @@
   </div>
 
 <% end %>
+
+<!-- Modal Clientes -->
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="customers" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Clientes</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_tag(@customer, method: :get) do %>
+        DNI <%= text_field_tag :dni , params[:dni]%>
+        <%= submit_tag 'Buscar', name: nil%>
+        <% end %>
+        <table class="table table-sm">
+          <thead class="thead-dark">
+            <tr>
+              <th>ID</th>
+              <th>DNI</th>
+              <th>Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @customers.each do |c|%>
+              <td><%= c.id%></td>
+              <td><%= c.dni%></td>
+              <td><%= c.nombre_primero%></td>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

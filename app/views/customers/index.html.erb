@@ -1,14 +1,38 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
 
-<h1>Customers</h1>
+  <!-- alertas -->
+  <div class="row">
+    <div class="col-md-12">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
+  
+  <!-- Busqueda de clientes -->
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+        <%= form_tag(customers_path , method: :get) do%>
+           DNI <%= text_field_tag :dni, params[:dni]%>
+           <%= submit_tag 'Buscar', name: nil %>
+        <% end %>
+    </div>
+  </div>
 
-<table>
+  <!-- Información principal -->
+  <div class="row">
+    <div class="col-md-12">
+
+      <h1>Clientes</h1>
+
+
+
+<table class="table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Nombre apellido1</th>
       <th>Nombre apellido2</th>
       <th>Nombre primero</th>
-      <th>Dni</th>
+      <th>DNI</th>
       <th>Direccion completa</th>
       <th>Cp</th>
       <th>Ppoblacion</th>
@@ -20,6 +44,7 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
+        <td><%= customer.id%></td>
         <td><%= customer.nombre_apellido1 %></td>
         <td><%= customer.nombre_apellido2 %></td>
         <td><%= customer.nombre_primero %></td>
@@ -36,6 +61,15 @@
   </tbody>
 </table>
 
-<br>
+    </div>
+  </div>
 
-<%= link_to 'New Customer', new_customer_path %>
+  <div class="row">
+    <div class="col-col-md-12 d-flex justify-content-end">
+      <%= link_to 'Nuevo Cliente', new_customer_path, :class => 'btn btn-success' %>
+    </div>
+  </div>
+
+
+
+</div>

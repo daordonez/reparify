@@ -1,5 +1,13 @@
 class CustomersController < InheritedResources::Base
 
+	def index
+		if params[:dni]
+			@customers = Customer.where('dni LIKE ?', "%#{params[:dni]}%")
+		else
+			@customers = Customer.all
+		end
+	end
+
   private
 
     def customer_params
